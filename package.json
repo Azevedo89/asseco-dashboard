@@ -1,0 +1,127 @@
+{
+  "name": "asseco-web-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "asseco-generate-config && webpack serve",
+    "build": "asseco-generate-config && webpack --mode=production --node-env=production",
+    "test": "craco test",
+    "eject": "craco eject",
+    "docs": "asseco-generate-docs -p components hooks",
+    "cy:open": "asseco-generate-config && cypress open",
+    "cy:run": "asseco-generate-config && cypress run",
+    "cy:run-component": "asseco-generate-config && cypress run --component",
+    "precy:run": "rm -rf cypress/screenshots cypress/results",
+    "prereport": "rm -rf results",
+    "report": "run-s report:*",
+    "report:merge": "mochawesome-merge cypress/results/json/*.json -o cypress/results/mochawesome-bundle.json",
+    "report:generate": "marge cypress/results/mochawesome-bundle.json",
+    "report:copyScreenshots": "cp -r cypress/screenshots cypress/results/html/screenshots",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" --quiet",
+    "format": "prettier \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" --write --loglevel=silent",
+    "prepare": "husky install",
+    "semantic-release": "semantic-release",
+    "lint-staged": "lint-staged --quiet"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "eslint --quiet",
+      "prettier --write --loglevel=silent"
+    ]
+  },
+  "publishConfig": {
+    "registry": "https://nexus.pst.asseco.com/repository/channels-npm-releases/"
+  },
+  "files": [
+    "build",
+    "documentation"
+  ],
+  "engines": {
+    "node": ">=16.18.0"
+  },
+  "dependencies": {
+    "@asseco-web/common-types": "^0.1.1",
+    "@asseco-web/configs": "^0.0.5",
+    "@asseco-web/atomic": "^2.0.1",
+    "@asseco-web/formatters": "^1.2.1",
+    "@asseco-web/helpers": "^1.1.0",
+    "@asseco-web/logger": "^2.0.4",
+    "@asseco-web/reducers": "^0.1.0",
+    "@asseco-web/theme": "^2.2.1",
+    "@asseco-web/ui": "^3.3.0",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@faker-js/faker": "^7.6.0",
+    "@hookform/resolvers": "^2.8.10",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.5.3",
+    "@mui/x-date-pickers": "^5.0.7",
+    "@reduxjs/toolkit": "^1.9.3",
+    "date-fns": "^2.29.3",
+    "framer-motion": "^6.5.1",
+    "i18next": "^22.4.6",
+    "jwt-decode": "^3.1.2",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.14",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.30.0",
+    "react-i18next": "^12.1.1",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.3.0",
+    "react-table": "^7.8.0",
+    "react-toastify": "^8.2.0",
+    "redux-persist": "^6.0.0",
+    "web-vitals": "^2.1.4",
+    "zod": "^3.22.4",
+    "zod-i18n-map": "^2.27.0"
+  },
+  "devDependencies": {
+    "@asseco/scripts": "^1.2.0",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/gitlab": "^7.0.4",
+    "@semantic-release/gitlab-config": "^9.0.0",
+    "@semantic-release/npm": "^8.0.3",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/lodash": "^4.14.202",
+    "@types/react-dom": "^18.2.5",
+    "@types/react-table": "^7.7.14",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "cypress": "^11.2.0",
+    "cypress-audit": "^1.1.0",
+    "cypress-mochawesome-reporter": "^3.2.3",
+    "cypress-multi-reporters": "^1.6.1",
+    "eslint": "^8.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "mocha-junit-reporter": "^2.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.3",
+    "prop-types": "^15.8.1",
+    "semantic-release": "^18.0.1",
+    "serve": "^14.1.2",
+    "start-server-and-test": "^1.14.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

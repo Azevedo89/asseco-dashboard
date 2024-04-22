@@ -1,0 +1,73 @@
+{
+  "branches": [
+    "+([0-9])?(.{+([0-9]),x}).x",
+    "main",
+    {
+      "name": "next",
+      "prerelease": true
+    }
+  ],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            {
+              "type": "feat",
+              "section": "Funcionalidades"
+            },
+            {
+              "type": "fix",
+              "section": "Correções"
+            },
+            {
+              "type": "remove",
+              "section": "Remoções"
+            },
+            {
+              "type": "security",
+              "section": "Segurança"
+            }
+          ]
+        }
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            {
+              "type": "feat",
+              "section": "Funcionalidades"
+            },
+            {
+              "type": "fix",
+              "section": "Correções"
+            },
+            {
+              "type": "remove",
+              "section": "Remoções"
+            },
+            {
+              "type": "security",
+              "section": "Segurança"
+            }
+          ]
+        }
+      }
+    ],
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/gitlab",
+      {
+        "gitlabUrl": "https://gitlab.pst.asseco.com"
+      }
+    ],
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ]
+}

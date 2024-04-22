@@ -1,0 +1,64 @@
+include:
+  - project: 'assecopst/react-modules'
+    ref: '@asseco-web/configs@0.0.3-next.3'
+    file: '/packages/configs/src/.gitlab-ci-template.yml'
+
+stages:
+  - build
+  - test
+  - deploy
+  - release
+
+build develop:
+  tags: [docker]
+  stage: build
+  artifacts:
+    paths:
+      - build
+    expire_in: 30m
+  only:
+    - develop
+  script:
+    # - npx cypress cache path
+    # - npx cypress cache list
+    - npm run build
+
+# e2e-test:
+#   image: cypress/browsers:node16.18.0-chrome107-ff106-edge
+#   stage: test
+#   tags: [docker]
+#   only:
+#     - develop
+#   script:
+#     - yarn start:ci & npx wait-on http://localhost:3000
+#     - npx cypress run
+
+deploy develop:
+  tags: [docker]
+  stage: deploy
+  only:
+    - develop
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - mkdir dist && mv build dist/demo
+    - ssh $SSH_USER@$VM_IPADDRESS 'cd /ASSECO_PST/INSTALLED/nginx/html && rm -rf demo'
+    - scp -r dist/demo $SSH_USER@$VM_IPADDRESS:/ASSECO_PST/INSTALLED/nginx/html
+
+generate docs:
+  tags: [docker]
+  stage: build
+  only:
+    - main
+  artifacts:
+    paths:
+      - documentation/
+    expire_in: 30m
+  script:
+    - npm run docs
