@@ -23,8 +23,8 @@ const authSlice = createSlice({
   extraReducers(builder) {
     builder
       .addMatcher(authApi.endpoints.login.matchFulfilled, (state, { payload }) => {
-        state.accessToken = payload.accessToken
-        const decoded = jwtDecode<DecodedAccessToken>(payload.accessToken)
+        state.accessToken = payload.token
+        const decoded = jwtDecode<DecodedAccessToken>(payload.token)
         state.email = decoded.email
         state.id = decoded.sub
       })

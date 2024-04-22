@@ -6,7 +6,7 @@ const consultsApi = rootApi.injectEndpoints({
       query: (params) => {
         return {
           url: 'logs',
-          params,
+          params: Object.fromEntries(Object.entries(params).filter(([key, value]) => value !== ''))
         }
       },
     }),

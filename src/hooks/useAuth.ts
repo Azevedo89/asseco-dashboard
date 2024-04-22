@@ -18,6 +18,7 @@ const useAuth = () => {
     isLoggedIn = decodedToken.exp * 1000 > Date.now();
   }
 
+  console.log({ auth, isLoggedIn })
   return {
     auth,
     isLoggedIn,
