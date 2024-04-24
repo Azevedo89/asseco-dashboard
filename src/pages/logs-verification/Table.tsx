@@ -3,7 +3,7 @@ import { Details } from '@asseco-web/ui/atomic';
 import { useTranslation } from 'react-i18next';
 
 import type { TableProps } from '@asseco-web/ui';
-import type { useLazyGetUserVerificationQuery } from 'api/verification-user.api';
+import type { useLazyGetLogsVerificationQuery } from 'api/verification-logs.api';
 import type { Client } from 'types/api.types';
 
 const { DetailsArea } = Details
@@ -14,7 +14,7 @@ export const Table = ({
   actions,
   filter,
 }: {
-  query: ReturnType<typeof useLazyGetUserVerificationQuery>
+  query: ReturnType<typeof useLazyGetLogsVerificationQuery>
   actions?: TableProps<Client>['actions']
   filter?: object
 }) => {
@@ -75,7 +75,7 @@ export const Table = ({
                       {
                         rows: [
                           [
-                            { noLeftSpace: true, label: 'Correlation ID', value: row.original.correlationId },
+                            { noLeftSpace: true, label: 'correlationId', value: row.original.correlationId },
                             { noLeftSpace: true, label: 'bankaversion', value: row.original.bankaversion },
                             { noLeftSpace: true, label: 'errormessage', value: row.original.errormessage },
                           ],

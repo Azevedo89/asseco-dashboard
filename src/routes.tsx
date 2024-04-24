@@ -1,7 +1,7 @@
 import CommonView from 'components/CommonView';
 import i18next from 'i18next';
 import { Login } from 'pages/login/Login';
-import UserVerification from 'pages/user-verification/UserVerification';
+import LogsVerification from 'pages/logs-verification/LogsVerification';
 import type { RouteObject } from 'react-router-dom';
 import consultsRoutes from 'routes/consult.routes';
 import otherPagesRoutes from 'routes/other-pages.routes';
@@ -18,11 +18,11 @@ const otherRoutes: RouteObject[] = [
 
 const appRoutes: RouteObject[] = [
   {
-    path: 'user-verification',
-    handle: { breadcrumb: t('userVerification') },
+    path: 'logs-verification',
+    handle: { breadcrumb: t('logsVerification') },
     element: (
-      <CommonView title={t('userVerification')}>
-        <UserVerification />
+      <CommonView title={t('logsVerification')}>
+        <LogsVerification />
       </CommonView>
     )
   },

@@ -2,7 +2,7 @@ import rootApi from 'api/root.api'
 
 const consultsApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUserVerification: builder.query({
+    getLogsVerification: builder.query({
       query: (params) => {
         return {
           url: 'logs',
@@ -14,5 +14,5 @@ const consultsApi = rootApi.injectEndpoints({
 })
 
 export const {
-  useLazyGetUserVerificationQuery
+  useLazyGetLogsVerificationQuery
 } = consultsApi

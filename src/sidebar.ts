@@ -12,7 +12,7 @@ const getSidebar = (): SidebarProps => {
         title: t('demoPortal'),
         description: t('pagesExamples'),
         entries: [
-          { icon: AppRegistrationOutlined, label: t('userVerification'), path: 'user-verification' },
+          { icon: AppRegistrationOutlined, label: t('logsVerification'), path: 'logs-verification' },
           { type: 'title', label: t('pagesExamples') },
           {
             type: 'group',

@@ -20,6 +20,7 @@ i18n
       pt: {
         zod: translation,
         translation: {
+          logsVerification: 'Verificação de logs',
           bankaversion: 'Versão da banca',
           errormessage: 'Mensagem de erro',
           errorcode: 'Erro de código',
@@ -30,7 +31,7 @@ i18n
           Datepicker: 'Data',
           Timepicker: 'Hora',
           system: 'Sistema',
-          sessionid: 'Id da sessão',
+          sessionId: 'Id da sessão',
           api: 'API',
           id: 'Id',
           newTab: 'Nova tab',

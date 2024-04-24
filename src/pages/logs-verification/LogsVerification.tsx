@@ -1,6 +1,6 @@
 import { FilterPrompt, useQueryParams } from '@asseco-web/ui'
 import { Surface } from '@asseco-web/ui/atomic'
-import { useLazyGetUserVerificationQuery } from 'api/verification-user.api'
+import { useLazyGetLogsVerificationQuery } from 'api/verification-logs.api'
 import { protectComponent } from 'components/ProtectedComponent'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -11,11 +11,11 @@ type Filter = {
   user?: string
 }
 
-const UserVerification = () => {
+const LogsVerification = () => {
   const { getParams } = useQueryParams()
   const { t } = useTranslation()
   const [filters, setFilters] = useState<Filter>(getParams())
-  const query = useLazyGetUserVerificationQuery()
+  const query = useLazyGetLogsVerificationQuery()
 
   return (
     <Surface>
@@ -28,4 +28,4 @@ const UserVerification = () => {
     </Surface>
   )
 }
-export default protectComponent(UserVerification)
+export default protectComponent(LogsVerification)
