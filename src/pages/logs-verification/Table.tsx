@@ -8,7 +8,6 @@ import type { Client } from 'types/api.types';
 
 const { DetailsArea } = Details
 
-
 export const Table = ({
   query,
   actions,
@@ -24,6 +23,14 @@ export const Table = ({
     {
       accessor: 'id',
       Header: t('id'),
+    },
+    {
+      accessor: 'date',
+      Header: t('date'),
+    },
+    {
+      accessor: 'time',
+      Header: t('time'),
     },
     {
       accessor: 'system',
