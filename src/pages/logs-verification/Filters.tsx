@@ -10,8 +10,15 @@ export const Filters = ({ setFilters, filters }: { setFilters: Dispatch<SetState
 
   const defaultValues = {
     user: '',
+    date: '',
+    time: '',
+    id: '',
+    api: '',
     station: '',
+    transaction: '',
     application: '',
+    errorcode: '',
+    sessionid: '',
   }
 
   const { control, handleSubmit, reset } = useForm({ mode: 'all', defaultValues: { ...defaultValues, ...filters } })
@@ -30,8 +37,31 @@ export const Filters = ({ setFilters, filters }: { setFilters: Dispatch<SetState
         <HiddenFilterForm>
           <Row>
             <Col component="form" onSubmit={handleSubmit(setFilters)} alignItems="flex-start">
-              <Input control={control} label={t('station')} name="station" w={1 / 6} />
-              <Input control={control} label={t('application')} name="application" w={1 / 6} />
+              <Row>
+                <Col>
+                  <Input control={control} label={t('station')} name="station" />
+                </Col>
+                <Col>
+                  <Input control={control} label={t('application')} name="application" />
+                </Col>
+                <Col>
+                  <Input control={control} label={t('id')} name="id" />
+                </Col>
+                <Col>
+                  <Input control={control} label={t('api')} name="api" />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Input control={control} label={t('transaction')} name="transaction" />
+                </Col>
+                <Col>
+                  <Input control={control} label={t('errorcode')} name="errorcode" />
+                </Col>
+                <Col>
+                  <Input control={control} label={t('sessionid')} name="sessionid" />
+                </Col>
+              </Row>
             </Col>
           </Row>
         </HiddenFilterForm>

@@ -29,9 +29,6 @@ export const Table = ({
             {
               rows: [
                 [
-                  { noLeftSpace: true, label: 'apidata', value: row.apidata },
-                ],
-                [
                   { noLeftSpace: true, label: 'remoteaddr', value: row.remoteaddr },
                   { noLeftSpace: true, label: 'https', value: row.https },
                   { noLeftSpace: true, label: 'servername', value: row.servername },
@@ -42,6 +39,9 @@ export const Table = ({
                   { noLeftSpace: true, label: 'errormessage', value: row.errormessage },
                   { noLeftSpace: true, label: 'encryption', value: row.encryption },
                   { noLeftSpace: true, label: 'correlationId', value: row.correlationId },
+                ],
+                [
+                  { noLeftSpace: true, label: 'apidata', value: row.apidata },
                 ],
               ],
             },
@@ -68,16 +68,32 @@ export const Table = ({
             Header: t('time'),
           },
           {
+            accessor: 'io',
+            Header: t('io'),
+          },
+          {
+            accessor: 'user',
+            Header: t('user'),
+          },
+          {
+            accessor: 'station',
+            Header: t('station'),
+          },
+          {
             accessor: 'system',
             Header: t('system'),
           },
           {
-            accessor: 'api',
-            Header: t('API'),
+            accessor: 'application',
+            Header: t('application'),
           },
           {
             accessor: 'sessionid',
             Header: t('sessionId'),
+          },
+          {
+            accessor: 'api',
+            Header: t('api'),
           },
           {
             accessor: 'transaction',
@@ -87,10 +103,7 @@ export const Table = ({
             accessor: 'errorcode',
             Header: t('errorcode'),
           },
-          {
-            accessor: 'io',
-            Header: t('io'),
-          },
+
         ]}
         actions={actions}
         query={query}
