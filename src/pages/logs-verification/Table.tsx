@@ -8,7 +8,6 @@ import type { Client } from 'types/api.types';
 
 const { DetailsArea } = Details
 
-// Definir o tipo TableRowType compatível com o tipo Client
 type TableRowType = Client;
 
 export const Table = ({
