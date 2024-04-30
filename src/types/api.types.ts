@@ -35,6 +35,11 @@ export type Client = {
   apidata: string
   errorcode: number
   errormessage: string
+  encryption: string
+  licencekey: string
+  https: boolean
+  remoteaddr: string
+  servername: string
 }
 
 export type ClientsResponse = { clients: Client[]; totalCount: number }
