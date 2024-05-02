@@ -1,5 +1,6 @@
 import CommonView from 'components/CommonView';
 import i18next from 'i18next';
+import Dashboard from 'pages/dashboard/Dashboard';
 import { Login } from 'pages/login/Login';
 import LogsVerification from 'pages/logs-verification/LogsVerification';
 import type { RouteObject } from 'react-router-dom';
@@ -29,6 +30,15 @@ const appRoutes: RouteObject[] = [
   ...consultsRoutes,
   ...rulesRoutes,
   ...otherPagesRoutes,
+  {
+    path: 'dashboard',
+    handle: { breadcrumb: t('dashboard') },
+    element: (
+      <CommonView title={t('dashboard')}>
+        <Dashboard />
+      </CommonView>
+    )
+  },
 ];
 
 export default { appRoutes, otherRoutes };

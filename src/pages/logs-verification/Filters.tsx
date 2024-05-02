@@ -23,7 +23,7 @@ export const Filters = ({ setFilters, filters }: { setFilters: Dispatch<SetState
     datepicker: '',
   }
 
-  const { control, handleSubmit, reset } = useForm({ mode: 'all', defaultValues: { ...defaultValues, ...filters } })
+  const { control, handleSubmit, reset } = useForm({ mode: 'onSubmit', defaultValues: { ...defaultValues, ...filters } })
 
   const clearSearch = () => {
     reset(defaultValues)
