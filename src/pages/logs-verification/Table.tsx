@@ -30,7 +30,6 @@ export const Table = ({
       </div>
     ));
 
-
     return (
       <DetailsArea expandedRowSubComponent>
         <DetailsSection
@@ -50,7 +49,6 @@ export const Table = ({
                   { noLeftSpace: true, label: 'correlationId', value: row.correlationId },
                 ],
                 [
-                  // Render apidata content
                   { noLeftSpace: true, label: 'apidata', value: apidataContent },
                 ],
               ],
