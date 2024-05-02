@@ -1,5 +1,5 @@
 import { Filter, FilterForm, HiddenFilterForm } from '@asseco-web/ui'
-import { Col, Input, Row } from '@asseco-web/ui/atomic'
+import { Col, DatePicker, Input, Row, TimePicker } from '@asseco-web/ui/atomic'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
@@ -19,6 +19,8 @@ export const Filters = ({ setFilters, filters }: { setFilters: Dispatch<SetState
     application: '',
     errorcode: '',
     sessionid: '',
+    timepicker: '',
+    datepicker: '',
   }
 
   const { control, handleSubmit, reset } = useForm({ mode: 'all', defaultValues: { ...defaultValues, ...filters } })
@@ -33,6 +35,8 @@ export const Filters = ({ setFilters, filters }: { setFilters: Dispatch<SetState
       <FilterForm onClear={clearSearch} onSubmit={handleSubmit(setFilters)}>
         <Row>
           <Input control={control} label={t('user')} name="user" />
+          <DatePicker control={control} label={t('date')} name="date" />
+          <TimePicker control={control} label={t('time')} name="time" />
         </Row>
         <HiddenFilterForm>
           <Row>
