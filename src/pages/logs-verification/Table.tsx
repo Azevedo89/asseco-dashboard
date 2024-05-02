@@ -22,14 +22,6 @@ export const Table = ({
   const { t } = useTranslation()
 
   const renderRowDetails = (row: TableRowType) => {
-    const apidata = row.apidata ? JSON.parse(row.apidata) : {};
-
-    const apidataContent: JSX.Element[] = Object.entries(apidata).map(([key, value]: [string, any]) => (
-      <div key={key}>
-        <strong>{key}:</strong> {value}
-      </div>
-    ));
-
     return (
       <DetailsArea expandedRowSubComponent>
         <DetailsSection
@@ -44,12 +36,42 @@ export const Table = ({
                 ],
                 [
                   { noLeftSpace: true, label: 'bankaversion', value: row.bankaversion },
-                  { noLeftSpace: true, label: 'errormessage', value: row.errormessage },
                   { noLeftSpace: true, label: 'encryption', value: row.encryption },
                   { noLeftSpace: true, label: 'correlationId', value: row.correlationId },
                 ],
                 [
-                  { noLeftSpace: true, label: 'apidata', value: apidataContent },
+                  {
+                    noLeftSpace: true,
+                    label: 'errormessage',
+                    value: (
+                      <div>
+                        <ul>
+                          {Object.entries(JSON.parse(row.errormessage || '{}')).map(([key, value]) => (
+                            <li key={key}>
+                              <strong>{key}:</strong> {String(value)}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )
+                  },
+                ],
+                [
+                  {
+                    noLeftSpace: true,
+                    label: 'apidata',
+                    value: (
+                      <div>
+                        <ul>
+                          {Object.entries(JSON.parse(row.apidata || '{}')).map(([key, value]) => (
+                            <li key={key}>
+                              <strong>{key}:</strong> {String(value)}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )
+                  },
                 ],
               ],
             },
