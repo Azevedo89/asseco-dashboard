@@ -22,6 +22,15 @@ export const Table = ({
   const { t } = useTranslation()
 
   const renderRowDetails = (row: TableRowType) => {
+    const apidata = row.apidata ? JSON.parse(row.apidata) : {};
+
+    const apidataContent: JSX.Element[] = Object.entries(apidata).map(([key, value]: [string, any]) => (
+      <div key={key}>
+        <strong>{key}:</strong> {value}
+      </div>
+    ));
+
+
     return (
       <DetailsArea expandedRowSubComponent>
         <DetailsSection
@@ -41,7 +50,8 @@ export const Table = ({
                   { noLeftSpace: true, label: 'correlationId', value: row.correlationId },
                 ],
                 [
-                  { noLeftSpace: true, label: 'apidata', value: row.apidata },
+                  // Render apidata content
+                  { noLeftSpace: true, label: 'apidata', value: apidataContent },
                 ],
               ],
             },
