@@ -6,7 +6,8 @@ const consultsApi = rootApi.injectEndpoints({
       query: (params) => {
         const adjustedParams = {
           ...params,
-          page: params.page ? params.page - 1 : -1
+          page: params.page ? params.page - 1 : -1,
+          errorcode: params.errorcode ? Number(params.errorcode) : ''
         };
         return {
           url: 'logs',
