@@ -1,4 +1,4 @@
-import { FilterPrompt, useQueryParams } from '@asseco-web/ui'
+import { useQueryParams } from '@asseco-web/ui'
 import { Surface } from '@asseco-web/ui/atomic'
 import { useLazyGetLogsVerificationQuery } from 'api/verification-logs.api'
 import { protectComponent } from 'components/ProtectedComponent'
@@ -20,11 +20,7 @@ const LogsVerification = () => {
   return (
     <Surface>
       <Filters setFilters={setFilters} filters={filters} />
-      {!filters.user ? (
-        <FilterPrompt message={t('pleaseSetCCInfo')} />
-      ) : (
-        <Table query={query} filter={filters} />
-      )}
+      <Table query={query} filter={filters} />
     </Surface>
   )
 }
