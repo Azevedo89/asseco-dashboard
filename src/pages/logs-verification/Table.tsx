@@ -119,7 +119,7 @@ export const Table = ({
           },
           {
             accessor: 'sessionid',
-            Header: t('sessionId'),
+            Header: t('sessionid'),
           },
           {
             accessor: 'api',
