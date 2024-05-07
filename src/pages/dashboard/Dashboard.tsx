@@ -14,13 +14,13 @@ const Dashboard = () => {
         return <div>Loading...</div>;
     }
 
-    const { logsCount, usersCount, apiTypes, transactionTypes, oldestDate, latestDate } = dashboardData;
+    const { logsCount, usersCount, oldestDate, latestDate } = dashboardData;
 
     return (
         <Surface>
             <h2>{t('dashboard')}</h2>
             <p>Total de Logs: {logsCount.body}</p>
-            <p>Total de Usuários: {usersCount.body}</p>
+            <p>Total de Users: {usersCount.body}</p>
             <p>Data mais antiga: {oldestDate.body}</p>
             <p>Data mais recente: {latestDate.body}</p>
         </Surface>
